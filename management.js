@@ -111,4 +111,27 @@ function checkRoomStatus(callback)  {
  }
  
 
- 
+ function changeRoomStatus(callback) {
+    let roomNumber = prompt("Enter the Room Number to modify:");
+    console.log("Waiting for the hotel staff...");
+    setTimeout(function() {
+        let room = rooms.find(r => r.Number === roomNumber);
+        if (room) {
+            let newStatus = prompt("Enter the mew status:").toLowerCase();
+            room.Status = newStatus;
+            if (newStatus === "busy") {
+                let guest = prompt("Enter the guest's name:");
+                room.GuestName = guest;
+            } else if (newStatus === "Vacant") {
+                room.GuestName = "";
+            }
+            console.log(`Room status ${roomNumber} successfully updated.`);
+        } else {
+            console.log("Error:Room doesn't exist.");
+        }
+        if (typeof callback === "function") {
+            callback();
+        }
+
+    }, 3000); 
+}
