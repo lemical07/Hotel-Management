@@ -37,3 +37,29 @@ function menu() {
    }         
 }
 menu();
+function addRoom(callback) {
+   let roomNumber = prompt("Enter room number:");
+   let roomType = prompt("Enter room type:");
+   let roomStatus = prompt("Enter room status:");
+   let priceNight = parseFloat(prompt("Enter price per night:"));
+   let guestName = prompt("Enter guest name :");
+
+
+   let newRoom = {
+       Number: roomNumber,
+       Type: roomType,
+       Status: roomStatus,
+       priceNight: priceNight,
+       GuestName: guestName
+   };
+
+
+   console.log("Saving to database...");
+
+
+   setTimeout(function(){
+       rooms.push(newRoom);
+       console.log("Room added successfully!");
+       if (callback)callback();
+   }, 2000);
+}
