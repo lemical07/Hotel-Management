@@ -135,3 +135,16 @@ function checkRoomStatus(callback)  {
 
     }, 3000); 
 }
+function deleteRoom(callback) {
+    let roomNumber = prompt("Enter Room Number for delete:");
+    let index = rooms.findIndex(room => room.Number === roomNumber);
+    if (index !== -1) {
+        rooms.splice(index, 1);
+        console.log(`Room Number ${roomNumber} was removed successfully.`);
+    } else {
+        console.log("Error: Room doesn't exist.");
+    }
+    if (typeof callback === "function") {
+        callback();
+    }
+}
