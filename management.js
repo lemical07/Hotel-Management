@@ -63,3 +63,27 @@ function addRoom(callback) {
        if (callback)callback();
    }, 2000);
 }
+function checkRoomStatus(callback)  {
+    console.log("===Room List===");
+ 
+ 
+   
+    if (rooms.length === 0) {
+        console.log("No rooms registered yet.");
+    } else {
+        rooms.forEach(room => {
+            console.log(
+                `Room Number: ${room.Number},
+                Type: ${room.Type},
+                Status: ${room.Status},
+                Price per Night: ${room.priceforNight},
+                Guest Name: ${room.GuestName || "None"}`
+            );
+        });
+    }
+    if (typeof callback === "function") {
+        callback();
+    }
+ }
+
+ 
