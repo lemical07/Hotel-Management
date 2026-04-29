@@ -86,4 +86,29 @@ function checkRoomStatus(callback)  {
     }
  }
 
+ function searchRoomByNumber(callback) {
+    let roomNumber = prompt("Enter room number to search:");
+    console.log("Consulting hotel database...");
+    setTimeout(function() {
+        let room = rooms.find(room => room.Number === roomNumber);
+ 
+ 
+    if (room) {
+        console.log("===Room Information===");
+        console.log(
+            `Room Number: ${room.Number},
+            Type: ${room.Type},
+            Status: ${room.Status},
+            Price per Night: ${room.priceforNight},
+            Guest Name: ${room.GuestName}`);
+    } else {
+        console.log("Room not found.");
+    }
+    if (typeof callback === "function") {
+        callback();
+    }
+    }, 2000);
+ }
+ 
+
  
